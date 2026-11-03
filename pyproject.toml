@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leafviewperiph"
+version = "0.1.0"
+description = "Local-first, capability-based peripheral management for LeafVibe"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "LeafVibe contributors" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+ble = ["bleak>=0.22"]
+usb = ["pyusb>=1.2"]
+serial = ["pyserial>=3.5"]
+
+[project.scripts]
+leafviewperiph = "leafviewperiph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
